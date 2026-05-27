@@ -19,7 +19,7 @@
 # DATOS DEL GRUPO
 # ------------------------------------------------------------------------------
 # Integrante A: Estefanía Robles Pérez  Carne: C4J010  GitHub:niarobles1404-tech
-# Integrante B: ______________________  Carne: __________  GitHub: ____________
+# Integrante B: Kenneth Solera Serrano  Carne: C5K031 GitHub: kserrano0270-bit
 # Integrante C: ______________________  Carne: __________  GitHub: ____________
 #               (deje en blanco si el grupo es de dos personas)
 #
