@@ -265,7 +265,7 @@ dev.off()
 # ------------------------------------------------------------------------------
 
 # 2.0  Instalen (si es necesario) y carguen el paquete.
-# install.packages("ggplot2")   # descomente solo si aun no lo tiene instalado
+#install.packages("ggplot2")   # descomente solo si aun no lo tiene instalado
 library(ggplot2)
 
 # ------------------------------------------------------------------------------
@@ -273,9 +273,13 @@ library(ggplot2)
 # ------------------------------------------------------------------------------
 # Reproduzca el diagrama de dispersion del Ejercicio 1.4 (Temp vs Ozone) pero
 # ahora con ggplot2 y geom_point().
-
 # >>> ESCRIBA SU CODIGO AQUI:
-
+plot_gg <- ggplot(airquality, aes(x = Temp, y = Ozone)) +
+  geom_point(pch = 19, color = "steelblue") +
+  labs(title = "Gráfico de dispersión de Temp y Ozone",
+       x = "Temperatura",
+       y = "Concentración de Ozono")
+print(plot_gg)
 
 
 # ------------------------------------------------------------------------------
@@ -286,13 +290,15 @@ library(ggplot2)
 # COMENTE que aporta esta tercera variable a la lectura del grafico.
 
 # >>> ESCRIBA SU CODIGO AQUI:
+aes_plot <- ggplot(airquality, aes(x = Temp, y = Ozone, color = factor(Month))) +
+  geom_point(pch = 19) +
+  labs(title = "Gráfico de dispersión de Temp y Ozone por Mes",
+       x = "Temperatura",
+       y = "Concentración de Ozono",
+       color = "Mes")
+print(aes_plot)
 
-
-
-# Comentario 2.2: ______________________________________________________________
-
-
-
+# Comentario 2.2: Al agregar el color según el mes, podemos observar si hay alguna tendencia o patrón en la relación entre temperatura y concentración de ozono a lo largo de los diferentes meses. Esto nos permite identificar si ciertos meses tienen niveles más altos o más bajos de ozono en relación con la temperatura, lo que podría ser útil para entender mejor las condiciones ambientales y su impacto en la calidad del aire.
 # ------------------------------------------------------------------------------
 # Ejercicio 2.3  GEOMETRIAS ADICIONALES Y FACETAS  (4 pts)  [Resp.: Integrante C]
 # ------------------------------------------------------------------------------
@@ -318,8 +324,13 @@ aes_plot <- ggplot(airquality, aes(x = Temp, y = Ozone, color = factor(Month))) 
 # de Sepal.Length por especie (Species). Use stat = "summary", fun = "mean".
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
-
+library(ggplot2)
+barplot <- ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  stat_summary(fun = "mean", geom = "bar", fill = "lightblue", color = "black") +
+  labs(title = "Promedio de Sepal.Length por Especie",
+       x = "Especie",
+       y = "Promedio de Sepal Length")
+print(barplot)
 
 # ------------------------------------------------------------------------------
 # Ejercicio 2.5  PERSONALIZACION COMPLETA  (4 pts) [Responsable: Integrante B]
@@ -329,9 +340,19 @@ aes_plot <- ggplot(airquality, aes(x = Temp, y = Ozone, color = factor(Month))) 
 # personalizar colores; y un theme_*() distinto al predeterminado.
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
-
-
+capas_plot <- ggplot(airquality, aes(x = Temp, y = Ozone, color = factor(Month))) +
+  geom_point(pch = 19) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ Month) +
+  labs(title = "Relación entre Temperatura y Ozone por Mes",
+       subtitle = "Datos de calidad del aire en Nueva York (1973)",
+       x = "Temperatura (°F)",
+       y = "Concentración de Ozone (ppb)",
+       color = "Mes",
+       caption = "Fuente: airquality dataset") +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal()
+print(capas_plot)
 # ==============================================================================
 # PARTE 3 - GRAFICOS CON MAPAS  (15 puntos)
 # ==============================================================================
@@ -591,7 +612,7 @@ print(grafico)
 #
 #   BITACORA DEL GRUPO (responder como comentarios):
 #   a) Cuantas ramas y cuantos pull requests crearon en total:
-#      _________________________________________________________________________
+#      Creamos 2 ramas, una por cada integrante, y 2 pull request, uno por cada rama.
 #   b) Describan brevemente un conflicto de fusion que enfrentaron y como lo
 #      resolvieron (o expliquen como lo evitaron):
 #    Fue un poco dificil acomodarnos para mandar los commits pero hablamos y decimos acordar que cada uno iba a avisar cuando iba a hacer un cambio
