@@ -19,7 +19,6 @@
 # DATOS DEL GRUPO
 # ------------------------------------------------------------------------------
 # Integrante A: Estefanía Robles Pérez  Carne: C4J010  GitHub:niarobles1404-tech
-# Integrante B: Kenneth Solera Serrano  Carne: C5K031  GitHub: kserrano0270-bit
 # Integrante C: Maria Castillo Cruz     Carne: C4D886  GitHub: mfcastilloc02
 #               (deje en blanco si el grupo es de dos personas)
 #
@@ -190,11 +189,11 @@ boxplot(airquality$Temp~airquality$Month, airquality,
 # airquality$Ozone (eje Y). Use pch = 19 y describa la relacion observada.
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
-
-
-# Comentario 1.4: ______________________________________________________________
-
+plot(airquality$Temp, airquality$Ozone,
+     main = "Gráfico de dispersión de Temp y Ozone",
+     xlab = "Temperatura",
+     ylab = "Concentración de Ozono")
+# Comentario 1.4: El gráfico de dispersión muestra una relación positiva entre temperatura y concentración de ozono
 
 
 # ------------------------------------------------------------------------------
@@ -376,8 +375,7 @@ library(maps)
 #     - wordcloud     : nubes de palabras.
 #     - lattice       : sistema de graficos alternativo (graficos en celosia).
 #
-# Libreria elegida: ____________________________________________________________
-# Justifiquen en una o dos lineas por que la eligieron:
+# Libreria elegida: ggthemes# Justifiquen en una o dos lineas por que la eligieron:
 #   ___________________________________________________________________________
 #
 # ------------------------------------------------------------------------------
@@ -387,17 +385,22 @@ library(maps)
 # COMPLETEN la siguiente ficha como comentarios. Indiquen las fuentes.
 #
 #   a) Nombre del paquete y autor(es) principales:
-#      _________________________________________________________________________
+#      ggthemes y su autor principal fue: Jeeffrey B. Arnold
 #   b) Para que tipo de visualizaciones se utiliza:
-#      _________________________________________________________________________
+#      Se utiliza para gráficos hechos con ggplot2, agregando temas, escalas y 
+#      geoms adicionales
 #   c) Funcion(es) principal(es) del paquete y que hace cada una:
-#      _________________________________________________________________________
+#     theme_*: Conjunto de funciones que aplican estilos predefinidos
+#      scale_*: Escalas de colores y estilos que acompañan los temas 
 #   d) Una ventaja y una limitacion frente al paquete base o ggplot2:
-#      Ventaja:    ______________________________________________________________
-#      Limitacion: ______________________________________________________________
+#      Ventaja:    Permite aplicar estilos profesionales y reconocibles rápidamente,
+#      mejorando la estética y comunicación visual
+#      Limitacion: Está limitado a los estilos predefinidos y no hay mucha variedad
 #   e) Fuentes consultadas (al menos dos, con su enlace):
-#      1) _______________________________________________________________________
-#      2) _______________________________________________________________________
+#      1) rnold, J. B. (2024). ggthemes: Extra themes, scales and geoms for ggplot2 
+#     (Versión 4.2.0) [Paquete R]. Comprehensive R Archive Network (CRAN). 
+#     https://CRAN.R-project.org/package=ggthemes
+#      2) Arnold, J. B. (s.f.). ggthemes documentation. https://jrnold.github.io/ggthemes
 #
 # ------------------------------------------------------------------------------
 # 4.3  EJEMPLO APLICADO  (8 pts)                   [Responsable: TODO EL GRUPO]
@@ -411,11 +414,27 @@ library(maps)
 # en una rama compartida (por ejemplo 'feature/parte4') y resuelvan en conjunto
 # cualquier conflicto de fusion que aparezca.
 
-# install.packages("__________")   # escriba aqui el nombre de su libreria
-# library(__________)
+# install.packages("ggthemes")   # escriba aqui el nombre de su libreria
+# library(ggthemes)              # cargue la libreria elegida
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
+#Dataset: mtcars
+# install.packages("ggplot2")   
+# install.packages("ggthemes")  
+library(ggplot2)
+library(ggthemes)
+# Cargar data de mtcars
+data("mtcars")
+# Queremos ver la relación entre el peso del auto (wt) y el consumo de gasolina (mpg)
+# Cada punto representa un automóvil
+grafico <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(color = "steelblue", size = 3) +   # puntos en azul
+  labs(title = "Relación entre peso y consumo de gasolina",
+       x = "Peso del automóvil (1000 lbs)",
+       y = "Millas por galón (mpg)") +
+  theme_economist() +                           # aplicar tema de ggthemes
+  scale_color_economist()                       # aplicar paleta de colores asociada
+print(grafico)
 
 
 # ------------------------------------------------------------------------------
