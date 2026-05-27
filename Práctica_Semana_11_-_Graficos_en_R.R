@@ -128,7 +128,12 @@ summary(ToothGrowth)
 # Asignele un titulo, una etiqueta de eje y un color de su eleccion.
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
+barplot(airquality$Wind,
+        main = "Grafico de Barras de Wind",
+        xlab = "Observaciones",
+        ylab = "Velocidad del Viento",
+        col = "lightblue",
+        border = "black")
 
 
 # ------------------------------------------------------------------------------
@@ -174,7 +179,7 @@ boxplot(airquality$Temp~airquality$Month, airquality,
         ylab = "Temperatura (F)", 
         col = "Lightblue")
 
-# Comentario 1.3: la media de de la temperatura es mas alta en julio, mientras que en mayo/septiembre es mas baja, y en junio es intermedia. 
+# Comentario 1.3: la media de de la temperatura es mas alta en julio, mientras que en mayo/septiembre es mas baja, y en junio es intermedia.
 
 
 
