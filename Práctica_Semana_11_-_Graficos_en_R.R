@@ -168,10 +168,13 @@ hist(airquality$Ozone,
 # Interprete: en que mes se observa la mayor temperatura mediana.
 
 # >>> ESCRIBA SU CODIGO AQUI:
+boxplot(airquality$Temp~airquality$Month, airquality, 
+        main = "Temperatura por mes", 
+        xlab= "Mes", 
+        ylab = "Temperatura (F)", 
+        col = "Lightblue")
 
-
-
-# Comentario 1.3: ______________________________________________________________
+# Comentario 1.3: la media de de la temperatura es mas alta en julio, mientras que en mayo/septiembre es mas baja, y en junio es intermedia. 
 
 
 
