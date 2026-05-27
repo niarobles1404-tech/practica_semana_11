@@ -205,6 +205,16 @@ plot(airquality$Temp, airquality$Ozone,
 # Pista: table(mtcars$cyl) y construya las etiquetas con paste0() y round().
 
 # >>> ESCRIBA SU CODIGO AQUI:
+cyl_var <- table(mtcars$cyl)
+
+cyl_porcentaje<- round(100 * cyl_var / sum(cyl_var), 1)
+labels <- paste0(names(cyl_var), " cilindros: ", cyl_porcentaje, "%")
+
+# Gráfico de pie
+pie(cyl_var,
+    labels = labels,
+    main = "Distribución de automóviles por cilindros",
+    col = c("lightblue", "lightgreen", "lightpink"))
 
 
 
@@ -218,7 +228,28 @@ plot(airquality$Temp, airquality$Ozone,
 #    versionar imagenes generadas automaticamente.
 
 # >>> ESCRIBA SU CODIGO AQUI:
+par(mfrow = c(1, 2))
 
+Primer_grafico<-
+hist(airquality$Temp,
+     main = "Histograma Temperatura",
+     xlab = "Temperatura (°F)",
+     col = "lightgreen")
+
+segundo_grafico <-hist(airquality$Wind,
+     main = "Histograma Viento",
+     xlab = "Velocidad del viento (mph)",
+     col = "lightblue")
+
+par(mfrow = c(1, 1))
+
+#Imagen 
+png("hist_wind.png", width = 800, height = 600)   
+hist(airquality$Wind,
+     main = "Histograma de Viento",
+     xlab = "Velocidad del viento (mph)",
+     col = "lightblue")
+dev.off() 
 
 
 # ==============================================================================
@@ -310,7 +341,9 @@ library(maps)
 
 # >>> ESCRIBA SU CODIGO AQUI:
 
+map(database = "World")
 
+map("world", regions = "Costa Rica", fill = TRUE, col = "lightgreen")
 
 # ------------------------------------------------------------------------------
 # Ejercicio 3.2  MAPA POLIGONAL CON ggplot2  (5 pts)  [Resp.: Integrante A]
@@ -538,9 +571,9 @@ print(grafico)
 #      _________________________________________________________________________
 #   b) Describan brevemente un conflicto de fusion que enfrentaron y como lo
 #      resolvieron (o expliquen como lo evitaron):
-#      _________________________________________________________________________
+#    Fue un poco dificil acomodarnos para mandar los commits pero hablamos y decimos acordar que cada uno iba a avisar cuando iba a hacer un cambio
 #   c) Que aprendio el grupo sobre el trabajo colaborativo con Git:
-#      _________________________________________________________________________
+#      La comunicación es escencial. Es importante que cada integrante sepa que ejercicios le corresponden.
 #
 # ==============================================================================
 # RUBRICA DE EVALUACION (resumen)
