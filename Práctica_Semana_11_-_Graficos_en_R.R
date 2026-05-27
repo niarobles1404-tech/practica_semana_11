@@ -99,6 +99,12 @@ str(airquality)
 str(mtcars)
 str(iris)
 str(ToothGrowth)
+
+summary(airquality)
+summary(mtcars)
+summary(iris)
+summary(ToothGrowth)
+
 # 0.2  En un comentario, indiquen cuantas observaciones y cuantas variables
 #      tiene 'airquality' y mencionen si contiene valores faltantes (NA).
 #
