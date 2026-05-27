@@ -19,7 +19,7 @@
 # DATOS DEL GRUPO
 # ------------------------------------------------------------------------------
 # Integrante A: Estefanía Robles Pérez  Carne: C4J010  GitHub:niarobles1404-tech
-# Integrante B: Kenneth Solera Serrano  Carne: C5K031 GitHub: kserrano0270-bit
+# Integrante B: Kenneth Solera Serrano  Carne: C5K031  GitHub: kserrano0270-bit
 # Integrante C: ______________________  Carne: __________  GitHub: ____________
 #               (deje en blanco si el grupo es de dos personas)
 #
@@ -133,10 +133,24 @@ data("ToothGrowth")
 
 # >>> ESCRIBA SU CODIGO AQUI:
 
+hist(airquality$Ozone,
+     breaks = 5,
+     main = "Histograma de Ozone (breaks = 5)",
+     xlab = "Nivel de Ozone",
+     col = "lightblue",
+     border = "black")
 
+# Histograma con más intervalos (breaks = 15)
+hist(airquality$Ozone,
+     breaks = 15,
+     main = "Histograma de Ozone (breaks = 15)",
+     xlab = "Nivel de Ozone",
+     col = "lightgreen",
+     border = "black")
 
-# Comentario 1.2: ______________________________________________________________
-
+# Comentario 1.2: Vemos como en el de break 5 los intervalos son mas amplios 
+# comparados a los de break 15 y vemos mas un resumen mas global comparado al de 15
+# que vemos resultados mas especificos
 
 
 # ------------------------------------------------------------------------------
