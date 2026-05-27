@@ -301,7 +301,14 @@ library(ggplot2)
 #   - un facet_wrap(~ Month) para separar un panel por mes.
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
+aes_plot <- ggplot(airquality, aes(x = Temp, y = Ozone, color = factor(Month))) +
+  geom_point(pch = 19) + 
+  geom_smooth(method = "lm", se = FALSE) +  
+  facet_wrap(~ Month) +                     
+  labs(title = "Gráfico de dispersión Temp vs Ozone por Mes",
+       x = "Temperatura (°F)",
+       y = "Concentración de Ozono (ppb)",
+       color = "Mes")
 
 
 # ------------------------------------------------------------------------------
@@ -356,7 +363,9 @@ map("world", regions = "Costa Rica", fill = TRUE, col = "lightgreen")
 #       geom_polygon(...) + coord_quickmap()
 
 # >>> ESCRIBA SU CODIGO AQUI:
-
+region <- map_data("world", region = "Costa Rica")
+ggplot(region, aes(x = long, y = lat, group = group)) +
+geom_polygon(fill = "red", color = "black") + coord_quickmap() + ggtitle("Mapa CR con ggplot2")
 
 
 # ------------------------------------------------------------------------------
@@ -368,7 +377,21 @@ map("world", regions = "Costa Rica", fill = TRUE, col = "lightgreen")
 # Pista: San Jose, Costa Rica  ->  long = -84.09, lat = 9.93
 
 # >>> ESCRIBA SU CODIGO AQUI:
+region <- map_data("world", region = "Costa Rica")
+localidad <- data.frame(
+  ciudad = "San José",
+  long = -84.09,
+  lat = 9.93
+)
 
+ggplot(region, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill = "red", color = "black") +
+  geom_point(data = localidad, aes(x = long, y = lat),
+             color = "blue", size = 3, inherit.aes = FALSE) +
+  geom_text(data = localidad, aes(x = long, y = lat, label = ciudad),
+            vjust = -1, color = "red", inherit.aes = FALSE) +
+  coord_quickmap() +
+  ggtitle("Mapa de Costa Rica con San José")
 
 
 # ==============================================================================
